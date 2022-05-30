@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "styles.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Allison's Speech to Text </h1>
+    <br>
+    <h2> 🗣️ --> 📝 </h2>
+    <br>
+    <div class = "row">
+        <button class = "button" id = "btn" onclick = "recognition.start()">
+            Speech to Text
+        </button>
+        <button class = "button" onclick = "copyDivToClipBoard()">
+            Copy Text
+        </button>
+    </div>
+   
+    <div id = "result" class = "container">
+    <p> Text will be written here! </p>
+    </div>
+    <script>
+        const btn = document.getElementById("btn");  
+        const results = document.getElementById("result");  
+        const speechRecognition = window.speechRecognition || window.webkitSpeechRecognition;  
+        const recognition = new speechRecognition();  
+        recognition.onstart = function(){  
+        console.log("you can speak now");  
+        }  
+        recognition.onresult = function(event){  
+        var text = event.results[0][0].transcript;  
+        console.log(text);  
+        document.getElementById("result").innerHTML = text;  
+        } 
+
+        function copyDivToClipBoard() {  
+        var range = document.createRange();  
+        range.selectNode(document.getElementById("result"));  
+        window.getSelection().removeAllRanges(); // clear current selection  
+        window.getSelection().addRange(range); // to select text  
+         document.execCommand("copy");  
+         window.getSelection().removeAllRanges();// to deselect  
+        alert("Text Copied!")  
+        }  
+    </script>
+    
+</body>
+</html>
