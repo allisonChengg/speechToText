@@ -21,7 +21,6 @@ h1 {
     width: 100vw;
     display: flex;
     justify-content: center; 
-    border-radius: 15px;
     background-color: gold;
     font-size: 2rem;
     padding: 1rem;
@@ -38,7 +37,6 @@ h1 {
     padding: 20px;
     width: 200px;
     text-align: center;
-    transition-duration: 0.4s /*Safari*/
 }
 .button:hover {
     background: silver;
